@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-04 21:18-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\theundesperator\apps\ceremony\apps.py:7
+msgid "Ceremony"
+msgstr ""
+
+#: .\theundesperator\apps\ceremony\models\base.py:11
+#: .\theundesperator\apps\ceremony\models\base.py:14
+#: .\theundesperator\apps\ceremony\models\base.py:19
+msgid "Category"
+msgstr ""
+
+#: .\theundesperator\apps\ceremony\models\base.py:15
+msgid "Categories"
+msgstr ""
+
+#: .\theundesperator\apps\ceremony\models\base.py:20
+msgid "Name"
+msgstr ""
+
+#: .\theundesperator\apps\ceremony\models\base.py:21
+msgid "Phone"
+msgstr ""
+
+#: .\theundesperator\apps\ceremony\models\base.py:22
+msgid "Website"
+msgstr ""
+
+#: .\theundesperator\apps\ceremony\models\base.py:23
+msgid "Price"
+msgstr ""
+
+#: .\theundesperator\apps\ceremony\models\base.py:24
+msgid "Notes"
+msgstr ""
+
+#: .\theundesperator\apps\ceremony\models\base.py:25
+msgid "Card"
+msgstr ""
+
+#: .\theundesperator\apps\ceremony\models\base.py:26
+msgid "Favorite"
+msgstr ""
+
+#: .\theundesperator\apps\ceremony\models\base.py:29
+msgid "Provider"
+msgstr ""
+
+#: .\theundesperator\apps\ceremony\models\base.py:30
+msgid "Providers"
+msgstr ""
+
+#: .\theundesperator\apps\contrib\apps.py:7
+msgid "contrib"
+msgstr ""
+
+#: .\theundesperator\apps\contrib\models\base_model.py:17
+msgid "Created At"
+msgstr ""
+
+#: .\theundesperator\apps\contrib\models\base_model.py:18
+msgid "Updated At"
+msgstr ""
+
+#: .\theundesperator\apps\core\apps.py:7
+msgid "Core"
+msgstr ""
+
+#: .\theundesperator\apps\core\models\base.py:11
+msgid "Item"
+msgstr ""
+
+#: .\theundesperator\apps\core\models\base.py:12
+msgid "Check"
+msgstr ""
