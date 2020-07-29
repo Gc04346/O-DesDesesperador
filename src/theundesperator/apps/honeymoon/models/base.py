@@ -7,36 +7,31 @@ from django.db import models
 from theundesperator.apps.contrib.models import BaseModel
 
 
-class PanTeaGuest(BaseModel):
-    name = models.CharField(verbose_name=_('Name'), max_length=100)
+class HoneymoonOrganizer(BaseModel):
+    when = models.DateField(verbose_name=_('When'), null=True, blank=True)
+    how_long = models.PositiveSmallIntegerField(verbose_name=_('How many days'), null=True, blank=True)
+    where = models.CharField(verbose_name=_('Where'), max_length=200, null=True, blank=True)
+    script = models.FileField(verbose_name=_('Tour Script'), upload_to='honeymoon_scripts', null=True, blank=True)
 
     class Meta:
-        verbose_name = _('Pan Tea Guest')
-        verbose_name_plural = _('Pan Tea Guests')
+        verbose_name = _('Honeymoon Organizer')
+        verbose_name_plural = _('Honeymoon Organizers')
+
+    def __str__(self):
+        return f'{self.where} @ {self.when}'
 
 
-class PanTeaOrganizer(BaseModel):
-    soda_quantity = models.PositiveSmallIntegerField(verbose_name=_('Soda Quantity'), null=True, blank=True)
-    diet_soda_quantity = models.PositiveSmallIntegerField(verbose_name=_('Diet Soda Quantity'), null=True, blank=True)
-    juice_quantity = models.PositiveSmallIntegerField(verbose_name=_('Juice Quantity'), null=True, blank=True)
-    diet_juice_quantity = models.PositiveSmallIntegerField(verbose_name=_('Diet Juice Quantity'), null=True, blank=True)
-    food_cook = models.CharField(verbose_name=_('Food Cook'), max_length=50, null=True, blank=True)
-    how_to_get_the_food = models.CharField(verbose_name=_('How to Get The Food'), max_length=100, null=True, blank=True)
-    food_price = models.DecimalField(verbose_name=_('Food Price'), max_digits=7, decimal_places=2, null=True,
-                                     blank=True)
-    food_ready = models.BooleanField(verbose_name=_('Food Ready'), default=False)
-    drinks_ready = models.BooleanField(verbose_name=_('Drinks Ready'), default=False)
-
-    class Meta:
-        verbose_name = _('Pan Tea Organizer')
-        verbose_name_plural = _('Pan Tea Organizers')
-
-
-class Decoration(BaseModel):
-    item = models.CharField(verbose_name=_('Item'), max_length=150)
-    check = models.BooleanField(verbose_name=_('Check'), default=False)
-    price = models.DecimalField(verbose_name=_('Price'), max_digits=7, decimal_places=2, null=True, blank=True)
+class Budget(BaseModel):
+    hotel_name = models.CharField(verbose_name=_('Hotel Name'), max_length=150)
+    hotel_price = models.DecimalField(verbose_name=_('Hotel Price'), max_digits=7, decimal_places=2, null=True, blank=True)
+    tickets_price = models.DecimalField(verbose_name=_('Tickets Price'), max_digits=7, decimal_places=2, null=True, blank=True)
+    leave_date = models.CharField(verbose_name=_('Leave Date'), max_length=200, null=True, blank=True)
+    arrival_date = models.CharField(verbose_name=_('Arrival Date'), max_length=200, null=True, blank=True)
+    tour_company = models.CharField(verbose_name=_('Tour Company'), max_length=150, null=True, blank=True)
 
     class Meta:
-        verbose_name = _('Decoration')
-        verbose_name_plural = _('Decorations')
+        verbose_name = _('Budget')
+        verbose_name_plural = _('Budgets')
+
+    def __str__(self):
+        return self.hotel_name

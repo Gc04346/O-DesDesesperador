@@ -23,34 +23,55 @@
                             </ul>
                         {% endif %}
                         <div class="text-center mt-5">
-                            <h3>{% trans 'Guests List' %}</h3>
+                            <h3>{% trans 'Providers List' %}</h3>
                         </div>
                         <div class="mt-5 py-5 border-top text-center">
                             <div class="row justify-content-center">
                                 <div class="col-lg-9">
-                                    <table id="myGuests" class="dataTable table table-striped nowrap"
+                                    <table id="myProviders" class="dataTable table table-striped nowrap"
                                            style="width:100%">
                                         <thead>
                                         <tr class="text-center">
                                             <th>{% trans 'Name' %}</th>
-                                            <th>{% trans 'Group' %}</th>
-                                            <th>{% trans 'Indispensability' %}</th>
-                                            <th>{% trans 'Edit' %}</th>
+                                            <th>{% trans 'Price' %}</th>
+                                            <th>{% trans 'Category' %}</th>
+                                            <th>{% trans 'Favorite' %}</th>
+                                            <th>{% trans 'Details' %}</th>
                                             <th>{% trans 'Delete' %}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for guest in guests %}
+                                        {% for provider in providers %}
                                             <tr class="text-center">
-                                                <td>{{ guest.name }}</td>
-                                                <td>{{ guest.get_group_display }}</td>
-                                                <td>{{ guest.indispensability }}</td>
+                                                <td>{{ provider.name }}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info bella-pink"
-                                                            id="guest-edit-{{ guest.id }}"><i
-                                                            class="fa fa-pencil table-button"></i></button>
+                                                    R$
+                                                    {% if provider.price %}
+                                                        {{ provider.price }}
+                                                    {% else %}
+                                                        0,00
+                                                    {% endif %}
                                                 </td>
-                                                <td><a href="#" id="guest-delete-{{ guest.id }}"
+                                                <td>{{ provider.category }}</td>
+                                                <td>
+                                                    <a id="favorite-provider-{{ provider.id }}">
+                                                        {% if provider.favorite %}
+                                                            <i class="fa fa-star"
+                                                               style="color: gold; font-size:20px"></i>
+                                                        {% else %}
+                                                            <i class="fa fa-star-o"
+                                                               style="color: gold; font-size:20px"></i>
+                                                        {% endif %}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'ceremony:ceremony-provider-update' provider.id %}"
+                                                       class="btn btn-info bella-pink"
+                                                       id="provider-edit-{{ provider.id }}"><i
+                                                            class="fa fa-eye table-button"></i></a>
+                                                </td>
+                                                <td><a href="{% url 'ceremony:ceremony-provider-delete' provider.id %}"
+                                                       id="provider-delete-{{ provider.id }}"
                                                        class="btn btn-info bella-pink"><i
                                                         class="fa fa-times table-button"></i> </a></td>
                                             </tr>
@@ -59,73 +80,10 @@
                                     </table>
                                 </div>
                             </div>
-                            <!-- Modal -->
-                            <div class="modal fade" id="editGuestModal" tabindex="-1" role="dialog"
-                                 aria-labelledby="edit-guest-modal" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="edit-guest-modal">{% trans 'Edit Guest' %}</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                {% csrf_token %}
-                                                <div class="form-group row">
-                                                    <input type="hidden" id="guestId">
-                                                    <label for="guestName"
-                                                           class="col-sm-3 col-form-label">{% trans 'Name' %}:</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="guestName">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="guestGroup"
-                                                           class="col-sm-3 col-form-label">{% trans 'Group' %}:</label>
-                                                    <div class="col-sm-9">
-                                                        <select id="guestGroup" class="form-control">
-                                                            <option selected>{% trans 'Choose' %}...</option>
-                                                            {% for group in guest_groups %}
-                                                                <option value="{{ group.0 }}">{{ group.1 }}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="guestIndispensability"
-                                                           class="col-sm-3 col-form-label">{% trans 'Indispensability' %}:</label>
-                                                    <div class="col-sm-9">
-                                                        <select id="guestIndispensability" class="form-control">
-                                                            <option selected>{% trans 'Choose' %}...</option>
-                                                            {% with ''|center:11 as range %}
-                                                                {% for _ in range %}
-                                                                    <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
-                                                                {% endfor %}
-                                                            {% endwith %}
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">{% trans 'Close' %}
-                                            </button>
-                                            <button type="button" id="saveGuestChanges"
-                                                    class="btn btn-info bella-pink">{% trans 'Save changes' %}</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6 col-md-6">
-                                    <strong>{% trans 'Current number of guests: ' %}{{ guests|length }}</strong>
-                                </div>
+                            <div class="row mt-3">
                                 <div class="col-xs-6 col-md-6 justify-content-end">
-                                    <a href="{% url 'ceremony:ceremony-guest-create' %}" class="btn btn-success"
-                                       style="background-color: deeppink; border-color:hotpink"> {% trans 'Add Guest' %}</a>
+                                    <a href="{% url 'ceremony:ceremony-provider-create' %}" class="btn btn-success"
+                                       style="background-color: deeppink; border-color:hotpink"> {% trans 'Add Provider' %}</a>
                                 </div>
                             </div>
                         </div>
@@ -141,9 +99,8 @@
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script>
         $(document).ready(function () {
-            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-            $('#myGuests').DataTable({
-                "order": [[2, 'desc']],
+            $('#myProviders').DataTable({
+                "order": [[0, 'desc']],
                 paging: false,
                 info: false,
                 responsive: true,
@@ -152,59 +109,31 @@
                     "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
                 },
             });
-            $('*[id*=guest-edit-]').each(function () {
+            $('*[id*=favorite-provider-]').each(function () {
                 $(this).click(function (e) {
                     e.preventDefault();
                     let elem_id = $(this).attr('id');
                     let ar = elem_id.split('-');
-                    let guest_id = ar[ar.length - 1];
+                    let provider_id = ar[ar.length - 1];
 
-                    let get_guest_url = "{% url 'api:api.ceremony-guest-detail' 0 %}".replace('0', guest_id);
+                    let get_provider_url = "{% url 'ceremony:ceremony-provider-set-favorite' 0 %}".replace('0', provider_id);
                     $('#editGuestModal').modal();
                     $.ajax({
-                        url: get_guest_url,
+                        url: get_provider_url,
                         method: 'GET',
                         dataType: 'json'
                     }).done(function (data) {
-                        $('#guestName').val(data.name);
-                        $('#guestId').val(data.id);
-                        let indisp = data.indispensability;
-                        let grp = data.group;
-                        $('#guestIndispensability option[value="indisp"]'.replace('indisp', indisp)).attr('selected', 'selected');
-                        $('#guestGroup option[value="grp"]'.replace('grp', grp)).attr('selected', 'selected');
+                        if (data['status'] === 'success'){
+                            location.reload();
+                        }else{
+                            console.log('nao funfou');
+                        }
                     }).fail(function () {
                         console.log('deu ruim')
                     });
                 });
             });
-            $('#saveGuestChanges').click(function (e) {
-                e.preventDefault();
-                let guest_id = $('#guestId').val();
-                let called_url = "{% url 'ceremony:ceremony-guest-update' 0 %}".replace('0', guest_id);
-                $.ajax({
-                    headers: {'X-CSRFToken': csrftoken},
-                    url: called_url,
-                    type: 'POST',
-                    data: {
-                        'name': $('#guestName').val(),
-                        'group': $('#guestGroup').children("option:selected").val(),
-                        'indispensability': $('#guestIndispensability').children("option:selected").val()
-                    },
-                    dataType: 'json'
-                }).done(function (response) {
-                    if (response.status === 'success') {
-                        console.log('deu bom');
-                        location.reload();
-                    } else {
-                        console.log(response['data']);
-                    }
-                }).fail(function (response) {
-                    console.log('didnt work');
-                    console.log(response);
-                });
-            });
         });
 
     </script>
-
 {% endblock %}

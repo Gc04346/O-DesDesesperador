@@ -1,0 +1,31 @@
+body{
+    background: rgb(54,217,182);
+    background: linear-gradient(90deg, rgba(244, 172, 183) 0%, rgba(255, 202, 212) 43%, rgba(255, 229, 217) 100%);
+}
+/*0,212,255,1*/
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
+
+.bella-pink{
+    background-color: deeppink;
+    border-color:hotpink;
+}
+
+.bella-star{
+    font-color: gold;
+    font-size:20px;
+}

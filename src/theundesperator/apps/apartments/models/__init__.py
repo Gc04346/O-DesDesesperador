@@ -1,1 +1,1 @@
-from .base import BaseChecklist
+from .base import Apartment, Room, Expense, Item

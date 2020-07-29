@@ -17,7 +17,7 @@
                             </ul>
                         {% endif %}
                         <div class="text-center mt-5">
-                            <h3>{% trans 'Our Ceremony' %}</h3>
+                            <h3>{% trans 'The Clothes' %}</h3>
                         </div>
                         <div class="mt-5 py-5 border-top text-center">
                             <div class="row justify-content-center">
@@ -26,14 +26,56 @@
                                         <fieldset>
                                             {% csrf_token %}
                                             <div class="row justify-content-center">
-                                                {{ form.place|as_crispy_field }}
+                                                <div class="col-xs-12 col-md-3">
+                                                    {{ form.grooms_mom_dress_color|as_crispy_field }}
+                                                </div>
+                                                <div class="col-xs-12 col-md-3">
+                                                    {{ form.brides_mom_dress_color|as_crispy_field }}
+                                                </div>
+                                                <div class="col-xs-12 col-md-3">
+                                                    {{ form.kids_dress_color|as_crispy_field }}
+                                                </div>
+                                                <div class="col-xs-12 col-md-3">
+                                                    {{ form.ring_bearer_costume_color|as_crispy_field }}
+                                                </div>
                                             </div>
                                             <div class="row justify-content-center">
-                                                {{ form.date|as_crispy_field }}
+                                                <div class="col-xs-12 col-md-3">
+                                                    {{ form.brides_dress|as_crispy_field }}
+                                                </div>
+                                                <div class="col-xs-12 col-md-3">
+                                                    {{ form.brides_shoes|as_crispy_field }}
+                                                </div>
+                                                <div class="col-xs-12 col-md-3">
+                                                    {{ form.brides_hairstyle|as_crispy_field }}
+                                                </div>
+                                                <div class="col-xs-12 col-md-3">
+                                                    {{ form.brides_makeup|as_crispy_field }}
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xs-12 col-md-4">
+                                                    {{ form.brides_hair_accessories|as_crispy_field }}
+                                                </div>
+                                                <div class="col-xs-12 col-md-4">
+                                                    {{ form.brides_body_accessories|as_crispy_field }}
+                                                </div>
+                                                <div class="col-xs-12 col-md-4">
+                                                    {{ form.brides_lingerie|as_crispy_field }}
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xs-12 col-md-6">
+                                                    {{ form.grooms_suit|as_crispy_field }}
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    {{ form.grooms_shoes|as_crispy_field }}
+                                                </div>
                                             </div>
                                             <hr>
                                             <div class="row justify-content-center mt-4">
-                                                <button class="btn btn-success" type="submit" style="background-color: deeppink; border-color:hotpink">{% trans 'Save Changes' %}</button>
+                                                <button class="btn btn-success" type="submit"
+                                                        style="background-color: deeppink; border-color:hotpink">{% trans 'Save Changes' %}</button>
                                             </div>
                                         </fieldset>
                                     </form>

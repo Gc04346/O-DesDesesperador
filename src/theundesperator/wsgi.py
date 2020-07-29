@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'theundesperator.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'theundesperator.settings.base')
 
 application = get_wsgi_application()

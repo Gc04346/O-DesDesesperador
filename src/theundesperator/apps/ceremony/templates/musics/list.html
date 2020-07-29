@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="wrapper">
+        <section class="section">
+            <div class="container">
+                <div class="card shadow mt-300">
+                    <div class="px-4">
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li style="color: white" {% if message.tags %}
+                                        class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="text-center mt-5">
+                            <h3>{% trans 'Songs List' %}</h3>
+                        </div>
+                        <div class="mt-5 py-5 border-top text-center">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-9">
+                                    <table id="mySongs" class="dataTable table table-striped nowrap"
+                                           style="width:100%">
+                                        <thead>
+                                        <tr class="text-center">
+                                            <th>{% trans 'Name' %}</th>
+                                            <th>{% trans 'Occasion' %}</th>
+                                            <th>{% trans 'Duration' %}</th>
+                                            <th>{% trans 'Link' %}</th>
+                                            <th>{% trans 'Edit' %}</th>
+                                            <th>{% trans 'Delete' %}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for song in musics %}
+                                            <tr class="text-center">
+                                                <td>{{ song.name }}</td>
+                                                <td>{{ song.occasion }}</td>
+                                                <td>{{ song.duration }}</td>
+                                                <td><a href="{{ song.link }}" target="_blank" class="btn btn-danger"><i
+                                                        class="fa fa-play-circle"></i></a></td>
+                                                <td>
+                                                    <a class="btn btn-info bella-pink"
+                                                       href="{% url 'ceremony:ceremony-music-update' song.id %}">
+                                                        <i class="fa fa-pencil table-button"></i>
+                                                    </a>
+                                                </td>
+                                                <td><a href="{% url 'ceremony:ceremony-music-delete' song.id %}" onclick="return confirm('Tem certeza?')"
+                                                       class="btn btn-info bella-pink"><i
+                                                        class="fa fa-times table-button"></i> </a></td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-12 mt-4">
+                                    <a href="{% url 'ceremony:ceremony-music-create' %}" class="btn btn-success"
+                                       style="background-color: deeppink; border-color:hotpink"> {% trans 'Add Song' %}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#mySongs').DataTable({
+                "order": [[2, 'desc']],
+                paging: false,
+                info: false,
+                responsive: true,
+                "scrollX": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
+                },
+            });
+        });
+
+    </script>
+
+{% endblock %}

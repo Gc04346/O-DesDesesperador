@@ -6,64 +6,103 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% trans 'The Undesperator' %}{% endblock %}</title>
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
 
-<!-- Icons -->
-<link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet" />
-<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Icons -->
+    <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet"/>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
-<!-- Theme CSS -->
-<link type="text/css" href="{% static 'css/argon-design-system.min.css' %}" rel="stylesheet">
-<link type="text/css" href="{% static 'css/custom.css' %}" rel="stylesheet">
-{% block extra_css %}{% endblock %}
+    <!-- Theme CSS -->
+    <link type="text/css" href="{% static 'css/argon-design-system.min.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
 {% block header %}
-<div class="header" id="myHeader">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-danger mt-0">
-        <div class="container">
-          <a class="navbar-brand" href="javascript:;">{% trans 'The Undesperator' %}</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-danger" aria-controls="navbar-danger" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbar-danger">
-            <div class="navbar-collapse-header">
-              <div class="row">
-                <div class="col-6 collapse-close">
-                  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-danger" aria-controls="navbar-danger" aria-expanded="false" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                  </button>
+    <div class="header" id="myHeader">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger mt-0">
+            <div class="container">
+                <a class="navbar-brand" href="javascript:;">{% trans 'The Undesperator' %}</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-danger"
+                        aria-controls="navbar-danger" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-danger">
+                    <div class="navbar-collapse-header">
+                        <div class="row">
+                            <div class="col-6 collapse-close">
+                                <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                        data-target="#navbar-danger" aria-controls="navbar-danger" aria-expanded="false"
+                                        aria-label="Toggle navigation">
+                                    <span></span>
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {% trans 'Ceremony' %}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{% url 'ceremony:ceremony-index' %}">{% trans 'Main' %}</a>
+                                    <a class="dropdown-item" href="{% url 'ceremony:ceremony-music-list' %}">{% trans 'Music' %}</a>
+                                    <a class="dropdown-item" href="{% url 'ceremony:ceremony-clothes_planner-list' %}">{% trans 'Clothes' %}</a>
+                                    <a class="dropdown-item" href="{% url 'ceremony:ceremony-groomsman-list' %}">{% trans 'Groomsmen' %}</a>
+                                    <a class="dropdown-item" href="{% url 'ceremony:ceremony-guest-list' %}">{% trans 'Guests' %}</a>
+                                    <a class="dropdown-item" href="{% url 'ceremony:ceremony-provider-list' %}">{% trans 'Providers' %}</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {% trans 'Apartments' %}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">{% trans 'Main' %}</a>
+                                    <a class="dropdown-item" href="#">{% trans 'Rooms' %}</a>
+                                    <a class="dropdown-item" href="#">{% trans 'Items' %}</a>
+                                    <a class="dropdown-item" href="#">{% trans 'Expenses' %}</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {% trans 'Honeymoon' %}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">{% trans 'Main' %}</a>
+                                    <a class="dropdown-item" href="#">{% trans 'Budgets' %}</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {% trans 'Pantea' %}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">{% trans 'Main' %}</a>
+                                    <a class="dropdown-item" href="#">{% trans 'Guests' %}</a>
+                                    <a class="dropdown-item" href="#">{% trans 'Decoration' %}</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-              </div>
             </div>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:;">{% trans 'Ceremony' %}
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:;">{% trans 'Apartments' %}
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:;">{% trans 'Honeymoon' %}
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="javascript:;">{% trans 'Pantea' %}
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-</div>
+        </nav>
+    </div>
 {% endblock %}
 {% block content %}{% endblock %}
 </body>

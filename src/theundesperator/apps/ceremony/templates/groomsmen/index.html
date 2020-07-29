@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="wrapper">
+        <section class="section">
+            <div class="container">
+                <div class="card shadow mt-300">
+                    <div class="px-4">
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li style="color: white" {% if message.tags %}
+                                        class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="text-center mt-5">
+                            <h3>{% trans 'Add Groomsman' %}</h3>
+                        </div>
+                        <div class="mt-5 py-5 border-top text-center">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-9">
+                                    <form data-toggle="validator" method="post">
+                                        {{ form.non_field_errors }}
+                                        <fieldset>
+                                            {% csrf_token %}
+                                            <div class="row justify-content-center">
+                                                <div class="col-xs-12 col-md-4">
+                                                    {{ form.name|as_crispy_field }}
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xs-12 col-md-4">
+                                                    {{ form.selector|as_crispy_field }}
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xs-12 col-md-4">
+                                                    {{ form.duo|as_crispy_field }}
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xs-12 col-md-4">
+                                                    <button class="btn btn-success" type="submit"
+                                                            style="background-color: deeppink; border-color:hotpink">{% trans 'Add' %}</button>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                    <hr>
+                                    <div class="row justify-content-center">
+                                        <div class="col-xs-12 col-md-6">
+                                            <strong>
+                                                {% trans 'Current number of solo groomsmen: ' %}{{ solo_groomsmen_ammount }}</strong><br>
+                                            <strong>
+                                                {% trans 'Current number of duo groomsmen: ' %}{{ duo_groomsmen_ammount }}</strong>
+                                            {% if consistency_errors %}
+                                                <br>
+                                                <strong style="color: red">{% trans 'There are inconsistencies on the couples. Please check the list.' %}</strong>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-xs-12 col-md-6">
+                                            <div class="row justify-content-end">
+                                                <a href="{% url 'ceremony:ceremony-groomsman-list' %}"
+                                                   class="btn btn-primary bella-pink">{% trans 'View all groomsmen' %}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

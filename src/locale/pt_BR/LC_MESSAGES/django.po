@@ -2,13 +2,11 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-04 21:18-0300\n"
+"POT-Creation-Date: 2020-06-30 15:13-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,76 +16,647 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: .\theundesperator\apps\apartments\apps.py:7
+#: .\theundesperator\apps\apartments\models\base.py:28
+#: .\theundesperator\apps\core\templates\base.html:65
+msgid "Apartments"
+msgstr "Apartamentos"
+
+#: .\theundesperator\apps\apartments\models\base.py:11
+#: .\theundesperator\apps\apartments\models\base.py:36
+#: .\theundesperator\apps\apartments\models\base.py:53
+#: .\theundesperator\apps\apartments\models\base.py:71
+#: .\theundesperator\apps\ceremony\models\base.py:81
+#: .\theundesperator\apps\ceremony\models\base.py:106
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:35
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:79
+#: .\theundesperator\apps\ceremony\templates\providers\index.html:104
+#: .\theundesperator\apps\ceremony\templates\providers\list.html:35
+#: .\theundesperator\apps\pantea\models\base.py:11
+msgid "Name"
+msgstr "Nome"
+
+#: .\theundesperator\apps\apartments\models\base.py:12
+msgid "Address"
+msgstr "Endereço"
+
+#: .\theundesperator\apps\apartments\models\base.py:13
+msgid "Number of Rooms"
+msgstr "Número de Quartos"
+
+#: .\theundesperator\apps\apartments\models\base.py:14
+msgid "Number of Bathrooms"
+msgstr "Número de Banheiros"
+
+#: .\theundesperator\apps\apartments\models\base.py:15
+msgid "Distance to Subway"
+msgstr "Distância até o Metrô"
+
+#: .\theundesperator\apps\apartments\models\base.py:16
+msgid "Distance to Bus Stop"
+msgstr "Distância até o Ponto de Ônibus"
+
+#: .\theundesperator\apps\apartments\models\base.py:17
+msgid "Distance to Essential Establishments"
+msgstr "Distância até Estabelecimentos Essenciais"
+
+#: .\theundesperator\apps\apartments\models\base.py:18
+#: .\theundesperator\apps\apartments\models\base.py:72
+#: .\theundesperator\apps\ceremony\models\base.py:84
+#: .\theundesperator\apps\ceremony\templates\providers\list.html:36
+#: .\theundesperator\apps\pantea\models\base.py:44
+msgid "Price"
+msgstr "Preço"
+
+#: .\theundesperator\apps\apartments\models\base.py:19
+#: .\theundesperator\apps\apartments\models\base.py:57
+#: .\theundesperator\apps\apartments\models\base.py:73
+#: .\theundesperator\apps\ceremony\models\base.py:85
+msgid "Notes"
+msgstr "Observações"
+
+#: .\theundesperator\apps\apartments\models\base.py:20
+msgid "Couple Grade"
+msgstr "Nota do Casal"
+
+#: .\theundesperator\apps\apartments\models\base.py:21
+msgid "System Grade"
+msgstr "Nota do Sistema"
+
+#: .\theundesperator\apps\apartments\models\base.py:22
+msgid "Picture"
+msgstr "Foto"
+
+#: .\theundesperator\apps\apartments\models\base.py:23
+msgid "Contact"
+msgstr "Contato"
+
+#: .\theundesperator\apps\apartments\models\base.py:24
+#: .\theundesperator\apps\ceremony\models\base.py:87
+#: .\theundesperator\apps\ceremony\templates\providers\list.html:38
+msgid "Favorite"
+msgstr "Favorito"
+
+#: .\theundesperator\apps\apartments\models\base.py:27
+#: .\theundesperator\apps\apartments\models\base.py:35
+msgid "Apartment"
+msgstr "Apartamento"
+
+#: .\theundesperator\apps\apartments\models\base.py:39
+#: .\theundesperator\apps\apartments\models\base.py:59
+msgid "Room"
+msgstr "Quarto"
+
+#: .\theundesperator\apps\apartments\models\base.py:40
+#: .\theundesperator\apps\core\templates\base.html:69
+msgid "Rooms"
+msgstr "Quartos"
+
+#: .\theundesperator\apps\apartments\models\base.py:48
+msgid "Essential"
+msgstr "Essencial"
+
+#: .\theundesperator\apps\apartments\models\base.py:49
+msgid "Important"
+msgstr "Importante"
+
+#: .\theundesperator\apps\apartments\models\base.py:50
+msgid "Delayable"
+msgstr "Adiável"
+
+#: .\theundesperator\apps\apartments\models\base.py:52
+msgid "Urgency"
+msgstr "Urgência"
+
+#: .\theundesperator\apps\apartments\models\base.py:54
+msgid "Price (Un.)"
+msgstr "Preço (Un.)"
+
+#: .\theundesperator\apps\apartments\models\base.py:55
+msgid "Quantity"
+msgstr "Quantidade"
+
+#: .\theundesperator\apps\apartments\models\base.py:56
+msgid "Price (Tt.)"
+msgstr "Preço (Tt.)"
+
+#: .\theundesperator\apps\apartments\models\base.py:58
+#: .\theundesperator\apps\api\models\base.py:12
+#: .\theundesperator\apps\core\models\base.py:12
+#: .\theundesperator\apps\pantea\models\base.py:43
+msgid "Check"
+msgstr "Checar"
+
+#: .\theundesperator\apps\apartments\models\base.py:62
+#: .\theundesperator\apps\api\models\base.py:11
+#: .\theundesperator\apps\core\models\base.py:11
+#: .\theundesperator\apps\pantea\models\base.py:42
+msgid "Item"
+msgstr "Item"
+
+#: .\theundesperator\apps\apartments\models\base.py:63
+#: .\theundesperator\apps\core\templates\base.html:70
+msgid "Items"
+msgstr "Itens"
+
+#: .\theundesperator\apps\apartments\models\base.py:70
+msgid "Type"
+msgstr "Tipo"
+
+#: .\theundesperator\apps\apartments\models\base.py:76
+msgid "Expense"
+msgstr "Despesa"
+
+#: .\theundesperator\apps\apartments\models\base.py:77
+#: .\theundesperator\apps\core\templates\base.html:71
+msgid "Expenses"
+msgstr "Despesas"
+
+#: .\theundesperator\apps\api\apps.py:7
+msgid "Api"
+msgstr "Api"
+
 #: .\theundesperator\apps\ceremony\apps.py:7
+#: .\theundesperator\apps\ceremony\models\base.py:37
+#: .\theundesperator\apps\core\templates\base.html:49
 msgid "Ceremony"
-msgstr ""
+msgstr "Cerimônia"
 
 #: .\theundesperator\apps\ceremony\models\base.py:11
 #: .\theundesperator\apps\ceremony\models\base.py:14
-#: .\theundesperator\apps\ceremony\models\base.py:19
+#: .\theundesperator\apps\ceremony\models\base.py:79
+#: .\theundesperator\apps\ceremony\templates\providers\list.html:37
 msgid "Category"
-msgstr ""
+msgstr "Categoria"
 
 #: .\theundesperator\apps\ceremony\models\base.py:15
 msgid "Categories"
-msgstr ""
-
-#: .\theundesperator\apps\ceremony\models\base.py:20
-msgid "Name"
-msgstr ""
-
-#: .\theundesperator\apps\ceremony\models\base.py:21
-msgid "Phone"
-msgstr ""
+msgstr "Categorias"
 
 #: .\theundesperator\apps\ceremony\models\base.py:22
-msgid "Website"
-msgstr ""
-
-#: .\theundesperator\apps\ceremony\models\base.py:23
-msgid "Price"
-msgstr ""
-
-#: .\theundesperator\apps\ceremony\models\base.py:24
-msgid "Notes"
-msgstr ""
-
 #: .\theundesperator\apps\ceremony\models\base.py:25
-msgid "Card"
-msgstr ""
+#: .\theundesperator\apps\ceremony\models\base.py:123
+msgid "Occasion"
+msgstr "Ocasião"
 
 #: .\theundesperator\apps\ceremony\models\base.py:26
-msgid "Favorite"
-msgstr ""
+msgid "Occasions"
+msgstr "Ocasiões"
 
-#: .\theundesperator\apps\ceremony\models\base.py:29
+#: .\theundesperator\apps\ceremony\models\base.py:33
+msgid "Place"
+msgstr "Lugar"
+
+#: .\theundesperator\apps\ceremony\models\base.py:34
+msgid "Date"
+msgstr "Data"
+
+#: .\theundesperator\apps\ceremony\models\base.py:38
+msgid "Ceremonies"
+msgstr "Cerimônias"
+
+#: .\theundesperator\apps\ceremony\models\base.py:45
+msgid "Groom's Mom Dress Color"
+msgstr "Cor do Vestido da Mãe do Noivo"
+
+#: .\theundesperator\apps\ceremony\models\base.py:47
+msgid "Bride's Mom Dress Color"
+msgstr "Cor do Vestido da Mãe da Noiva"
+
+#: .\theundesperator\apps\ceremony\models\base.py:49
+msgid "Kid's Dress Color"
+msgstr "Cor do Vestido das Damas de Honra"
+
+#: .\theundesperator\apps\ceremony\models\base.py:50
+msgid "Ring Bearer Costume Color"
+msgstr "Cor da Vestimenta do Pajem"
+
+#: .\theundesperator\apps\ceremony\models\base.py:52
+msgid "Bride's Dress"
+msgstr "Vestido da Noiva"
+
+#: .\theundesperator\apps\ceremony\models\base.py:54
+msgid "Bride's Shoes"
+msgstr "Sapatos da Noiva"
+
+#: .\theundesperator\apps\ceremony\models\base.py:56
+msgid "Bride's Hairstyle"
+msgstr "Pentado da Noiva"
+
+#: .\theundesperator\apps\ceremony\models\base.py:58
+msgid "Bride's Makeup"
+msgstr "Maquiagem da Noiva"
+
+#: .\theundesperator\apps\ceremony\models\base.py:60
+msgid "Bride's Hair Acessories"
+msgstr "Acessórios de Cabelo da Noiva"
+
+#: .\theundesperator\apps\ceremony\models\base.py:62
+msgid "Bride's Body Acessories"
+msgstr "Acessórios de Corpo da Noiva"
+
+#: .\theundesperator\apps\ceremony\models\base.py:64
+msgid "Bride's Lingerie"
+msgstr "Lingerie da Noiva"
+
+#: .\theundesperator\apps\ceremony\models\base.py:66
+msgid "Groom's Suit"
+msgstr "Terno do Noivo"
+
+#: .\theundesperator\apps\ceremony\models\base.py:67
+msgid "Groom's Shoes"
+msgstr "Sapatos do Noivo"
+
+#: .\theundesperator\apps\ceremony\models\base.py:71
+msgid "Clothes Planner"
+msgstr "Planejador de Vestimentas"
+
+#: .\theundesperator\apps\ceremony\models\base.py:72
+msgid "Clothes Planners"
+msgstr "Planejadores de Vestimentas"
+
+#: .\theundesperator\apps\ceremony\models\base.py:82
+msgid "Phone"
+msgstr "Telefone"
+
+#: .\theundesperator\apps\ceremony\models\base.py:83
+msgid "Website"
+msgstr "Site"
+
+#: .\theundesperator\apps\ceremony\models\base.py:86
+msgid "Card"
+msgstr "Cartão"
+
+#: .\theundesperator\apps\ceremony\models\base.py:90
 msgid "Provider"
-msgstr ""
+msgstr "Fornecedor"
 
-#: .\theundesperator\apps\ceremony\models\base.py:30
+#: .\theundesperator\apps\ceremony\models\base.py:91
+#: .\theundesperator\apps\core\templates\base.html:57
 msgid "Providers"
-msgstr ""
+msgstr "Fornecedores"
+
+#: .\theundesperator\apps\ceremony\models\base.py:99
+msgid "Groom's Family"
+msgstr "Família do Noivo"
+
+#: .\theundesperator\apps\ceremony\models\base.py:100
+msgid "Bride's  Family"
+msgstr "Família da Noiva"
+
+#: .\theundesperator\apps\ceremony\models\base.py:101
+msgid "Groom's Friend"
+msgstr "Amigo do Noivo"
+
+#: .\theundesperator\apps\ceremony\models\base.py:102
+msgid "Bride's Friend"
+msgstr "Amigo da Noiva"
+
+#: .\theundesperator\apps\ceremony\models\base.py:103
+msgid "Don't want to invite, but have to"
+msgstr "Não quero convidar, mas preciso"
+
+#: .\theundesperator\apps\ceremony\models\base.py:105
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:36
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:86
+msgid "Group"
+msgstr "Grupo"
+
+#: .\theundesperator\apps\ceremony\models\base.py:107
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:37
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:98
+msgid "Indispensability"
+msgstr "Indispensabilidade"
+
+#: .\theundesperator\apps\ceremony\models\base.py:108
+msgid "Indicates how much you really want this person to go"
+msgstr "Indica o quanto você realmente quer que essa pessoa vá"
+
+#: .\theundesperator\apps\ceremony\models\base.py:111
+msgid "Guest"
+msgstr "Convidado"
+
+#: .\theundesperator\apps\ceremony\models\base.py:112
+#: .\theundesperator\apps\core\templates\base.html:56
+#: .\theundesperator\apps\core\templates\base.html:95
+msgid "Guests"
+msgstr "Convidados"
+
+#: .\theundesperator\apps\ceremony\models\base.py:126
+msgid "Song duration"
+msgstr "Duração da Música"
+
+#: .\theundesperator\apps\ceremony\models\base.py:127
+msgid "Link to the song"
+msgstr "Link para a música"
+
+#: .\theundesperator\apps\ceremony\models\base.py:130
+#: .\theundesperator\apps\core\templates\base.html:53
+msgid "Music"
+msgstr "Música"
+
+#: .\theundesperator\apps\ceremony\models\base.py:131
+msgid "Musics"
+msgstr "Músicas"
+
+#: .\theundesperator\apps\ceremony\models\base.py:139
+msgid "Groom"
+msgstr "Noivo"
+
+#: .\theundesperator\apps\ceremony\models\base.py:140
+msgid "Bride"
+msgstr "Noiva"
+
+#: .\theundesperator\apps\ceremony\models\base.py:142
+msgid "Sponsored"
+msgstr "Apadrinhado"
+
+#: .\theundesperator\apps\ceremony\models\base.py:143
+msgid "Who chose the groomsman"
+msgstr "Quem escolheu o noivo"
+
+#: .\theundesperator\apps\ceremony\models\base.py:145
+msgid "Duo"
+msgstr "Par"
+
+#: .\theundesperator\apps\ceremony\models\base.py:148
+msgid "Groomsman"
+msgstr "Padrinho"
+
+#: .\theundesperator\apps\ceremony\models\base.py:149
+#: .\theundesperator\apps\core\templates\base.html:55
+msgid "Groomsmen"
+msgstr "Padrinhos"
+
+#: .\theundesperator\apps\ceremony\templates\guests\index.html:19
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:128
+msgid "Add Guest"
+msgstr "Adicionar Convidado"
+
+#: .\theundesperator\apps\ceremony\templates\guests\index.html:45
+#: .\theundesperator\apps\ceremony\templates\providers\index.html:79
+msgid "Add"
+msgstr "Adicionar"
+
+#: .\theundesperator\apps\ceremony\templates\guests\index.html:52
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:124
+msgid "Current number of guests: "
+msgstr "Núm. atual de convidados: "
+
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:26
+msgid "Guests List"
+msgstr "Lista de Convidados"
+
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:38
+msgid "Edit"
+msgstr "Editar"
+
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:39
+#: .\theundesperator\apps\ceremony\templates\providers\list.html:40
+msgid "Delete"
+msgstr "Remover"
+
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:68
+msgid "Edit Guest"
+msgstr "Editar Convidado"
+
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:89
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:101
+msgid "Choose"
+msgstr "Escolha"
+
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:114
+#: .\theundesperator\apps\ceremony\templates\providers\index.html:114
+msgid "Close"
+msgstr "Fechar"
+
+#: .\theundesperator\apps\ceremony\templates\guests\list.html:117
+msgid "Save changes"
+msgstr "Salvar mudanças"
+
+#: .\theundesperator\apps\ceremony\templates\providers\index.html:21
+msgid "View Provider"
+msgstr "Ver Fornecedor"
+
+#: .\theundesperator\apps\ceremony\templates\providers\index.html:23
+#: .\theundesperator\apps\ceremony\templates\providers\list.html:86
+msgid "Add Provider"
+msgstr "Add Fornecedor"
+
+#: .\theundesperator\apps\ceremony\templates\providers\index.html:77
+#: .\theundesperator\apps\ceremony\templates\providers\index.html:117
+msgid "Save"
+msgstr "Salvar"
+
+#: .\theundesperator\apps\ceremony\templates\providers\index.html:93
+msgid "Add Category"
+msgstr "Add Categoria"
+
+#: .\theundesperator\apps\ceremony\templates\providers\index.html:126
+msgid "View all providers"
+msgstr "Ver todos os fornecedores"
+
+#: .\theundesperator\apps\ceremony\templates\providers\list.html:26
+msgid "Providers List"
+msgstr "Lista de Fornecedores"
+
+#: .\theundesperator\apps\ceremony\templates\providers\list.html:39
+msgid "Details"
+msgstr "Detalhes"
+
+#: .\theundesperator\apps\ceremony\views.py:17
+msgid "{} was added to the guest list!"
+msgstr "{} foi adicionado(a) à lista de convidados!"
+
+#: .\theundesperator\apps\ceremony\views.py:20
+#: .\theundesperator\apps\ceremony\views.py:47
+#: .\theundesperator\apps\ceremony\views.py:69
+#: .\theundesperator\apps\ceremony\views.py:89
+#: .\theundesperator\apps\ceremony\views.py:118
+msgid "Fix the validation errors below before saving!"
+msgstr "Corrija os erros de validação abaixo antes de salvar!"
+
+#: .\theundesperator\apps\ceremony\views.py:44
+#: .\theundesperator\apps\ceremony\views.py:116
+msgid "{} was updated!"
+msgstr "{} foi atualizado!"
+
+#: .\theundesperator\apps\ceremony\views.py:66
+msgid "New category added!"
+msgstr "Nova categoria adicionada!"
+
+#: .\theundesperator\apps\ceremony\views.py:87
+msgid "New provider added!"
+msgstr "Novo fornecedor adicionado!"
+
+#: .\theundesperator\apps\ceremony\views.py:104
+msgid "Provider deleted!"
+msgstr "Fornecedor removido!"
 
 #: .\theundesperator\apps\contrib\apps.py:7
 msgid "contrib"
-msgstr ""
+msgstr "contrib"
 
 #: .\theundesperator\apps\contrib\models\base_model.py:17
 msgid "Created At"
-msgstr ""
+msgstr "Criado em"
 
 #: .\theundesperator\apps\contrib\models\base_model.py:18
 msgid "Updated At"
-msgstr ""
+msgstr "Atualizado em"
 
 #: .\theundesperator\apps\core\apps.py:7
 msgid "Core"
-msgstr ""
+msgstr "Principal"
 
-#: .\theundesperator\apps\core\models\base.py:11
-msgid "Item"
-msgstr ""
+#: .\theundesperator\apps\core\templates\base.html:7
+#: .\theundesperator\apps\core\templates\base.html:26
+msgid "The Undesperator"
+msgstr "O DesDesesperador"
 
-#: .\theundesperator\apps\core\models\base.py:12
-msgid "Check"
-msgstr ""
+#: .\theundesperator\apps\core\templates\base.html:52
+#: .\theundesperator\apps\core\templates\base.html:68
+#: .\theundesperator\apps\core\templates\base.html:82
+#: .\theundesperator\apps\core\templates\base.html:94
+msgid "Main"
+msgstr "Principal"
+
+#: .\theundesperator\apps\core\templates\base.html:54
+msgid "Clothes"
+msgstr "Roupas"
+
+#: .\theundesperator\apps\core\templates\base.html:79
+#: .\theundesperator\apps\honeymoon\apps.py:7
+msgid "Honeymoon"
+msgstr "Lua de Mel"
+
+#: .\theundesperator\apps\core\templates\base.html:83
+#: .\theundesperator\apps\honeymoon\models\base.py:34
+msgid "Budgets"
+msgstr "Orçamentos"
+
+#: .\theundesperator\apps\core\templates\base.html:91
+msgid "Pantea"
+msgstr "Chá de Panela"
+
+#: .\theundesperator\apps\core\templates\base.html:96
+#: .\theundesperator\apps\pantea\models\base.py:47
+msgid "Decoration"
+msgstr "Decoração"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:11
+msgid "When"
+msgstr "Quando"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:12
+msgid "How many days"
+msgstr "Quantos dias"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:13
+msgid "Where"
+msgstr "Onde"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:14
+msgid "Tour Script"
+msgstr "Script do Tour"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:17
+msgid "Honeymoon Organizer"
+msgstr "Organizador de Lua de Mel"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:18
+msgid "Honeymoon Organizers"
+msgstr "Organizadores de Lua de Mel"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:25
+msgid "Hotel Name"
+msgstr "Nome do Hotel"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:26
+msgid "Hotel Price"
+msgstr "Preço do Hotel"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:27
+msgid "Tickets Price"
+msgstr "Preço das Passagens"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:28
+msgid "Leave Date"
+msgstr "Data de Partida"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:29
+msgid "Arrival Date"
+msgstr "Data de Chegada"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:30
+msgid "Tour Company"
+msgstr "Cia. Turística"
+
+#: .\theundesperator\apps\honeymoon\models\base.py:33
+msgid "Budget"
+msgstr "Orçamento"
+
+#: .\theundesperator\apps\pantea\apps.py:7
+msgid "Pan Tea"
+msgstr "Chá de Panela"
+
+#: .\theundesperator\apps\pantea\models\base.py:14
+msgid "Pan Tea Guest"
+msgstr "Convidado do Chá de Panela"
+
+#: .\theundesperator\apps\pantea\models\base.py:15
+msgid "Pan Tea Guests"
+msgstr "Convidados do Chá de Panela"
+
+#: .\theundesperator\apps\pantea\models\base.py:22
+msgid "Soda Quantity"
+msgstr "Quant. de Refrigerante"
+
+#: .\theundesperator\apps\pantea\models\base.py:23
+msgid "Diet Soda Quantity"
+msgstr "Quant. de Refrigerantes Diet"
+
+#: .\theundesperator\apps\pantea\models\base.py:24
+msgid "Juice Quantity"
+msgstr "Quant. de Suco"
+
+#: .\theundesperator\apps\pantea\models\base.py:25
+msgid "Diet Juice Quantity"
+msgstr "Quant. de Suco Diet"
+
+#: .\theundesperator\apps\pantea\models\base.py:26
+msgid "Food Cook"
+msgstr "Cozinheiro"
+
+#: .\theundesperator\apps\pantea\models\base.py:27
+msgid "How to Get The Food"
+msgstr "Como pegar a comida"
+
+#: .\theundesperator\apps\pantea\models\base.py:28
+msgid "Food Price"
+msgstr "Preço da Comida"
+
+#: .\theundesperator\apps\pantea\models\base.py:30
+msgid "Food Ready"
+msgstr "Comida Pronto"
+
+#: .\theundesperator\apps\pantea\models\base.py:31
+msgid "Drinks Ready"
+msgstr "Bebidas Pronto"
+
+#: .\theundesperator\apps\pantea\models\base.py:34
+msgid "Pan Tea Organizer"
+msgstr "Organizador do Chá de Panela"
+
+#: .\theundesperator\apps\pantea\models\base.py:35
+msgid "Pan Tea Organizers"
+msgstr "Organizadores do Chá de Panela"
+
+#: .\theundesperator\apps\pantea\models\base.py:48
+msgid "Decorations"
+msgstr "Decorações"
+
+#: .\theundesperator\urls.py:13 .\theundesperator\urls.py:14
+#: .\theundesperator\urls.py:15
+msgid "The UnDesperator"
+msgstr "O DesDesesperador"
