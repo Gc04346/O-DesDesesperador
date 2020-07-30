@@ -8,6 +8,7 @@ urlpatterns = [
     path('api/', include('theundesperator.apps.api.urls')),
     path('', include('theundesperator.apps.core.urls')),
     path('ceremony/', include('theundesperator.apps.ceremony.urls', namespace='ceremony')),
+    path('apartment/', include('theundesperator.apps.apartments.urls', namespace='apartment')),
 ]
 
 admin.site.site_header = _('The UnDesperator') + ' - Admin'
