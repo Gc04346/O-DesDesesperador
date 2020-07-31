@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="wrapper">
+        <section class="section">
+            <div class="container">
+                <div class="card shadow mt-300">
+                    <div class="px-4">
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li style="color: white" {% if message.tags %}
+                                        class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="text-center mt-5">
+                            <h3>{% trans 'Our Honeymoon' %}</h3>
+                        </div>
+                        <div class="mt-5 py-5 border-top text-center">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-9">
+                                    <form data-toggle="validator" method="post">
+                                        <fieldset>
+                                            {% csrf_token %}
+                                            <div class="row justify-content-center">
+                                                {{ form.when|as_crispy_field }}
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                {{ form.how_long|as_crispy_field }}
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                {{ form.where|as_crispy_field }}
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                {{ form.script|as_crispy_field }}
+                                            </div>
+                                            <hr>
+                                            <div class="row justify-content-center mt-4">
+                                                <button class="btn btn-success" type="submit" style="background-color: deeppink; border-color:hotpink">{% trans 'Save Changes' %}</button>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+{% block extra_scripts %}
+
+{% endblock %}
