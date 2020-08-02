@@ -66,11 +66,9 @@
                                     {% trans 'Apartments' %}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">{% trans 'Main' %}</a>
+                                    <a class="dropdown-item" href="{% url 'apartment:room-list' %}">{% trans 'Main' %}</a>
                                     <a class="dropdown-item" href="{% url 'apartment:apartment-list' %}">{% trans 'Apartment Options' %}</a>
-                                    <a class="dropdown-item" href="#">{% trans 'Rooms' %}</a>
                                     <a class="dropdown-item" href="#">{% trans 'Items' %}</a>
-                                    <a class="dropdown-item" href="#">{% trans 'Expenses' %}</a>
                                 </div>
                             </div>
                         </li>
@@ -81,8 +79,8 @@
                                     {% trans 'Honeymoon' %}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">{% trans 'Main' %}</a>
-                                    <a class="dropdown-item" href="#">{% trans 'Budgets' %}</a>
+                                    <a class="dropdown-item" href="{% url 'honeymoon:honeymoon_organizer-index' %}">{% trans 'Main' %}</a>
+                                    <a class="dropdown-item" href="{% url 'honeymoon:budget-list' %}">{% trans 'Budgets' %}</a>
                                 </div>
                             </div>
                         </li>

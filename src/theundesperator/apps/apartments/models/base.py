@@ -32,7 +32,6 @@ class Apartment(BaseModel):
 
 
 class Room(BaseModel):
-    apartment = models.ForeignKey(verbose_name=_('Apartment'), to=Apartment, on_delete=models.CASCADE)
     name = models.CharField(verbose_name=_('Name'), max_length=100)
 
     class Meta:
@@ -40,7 +39,7 @@ class Room(BaseModel):
         verbose_name_plural = _('Rooms')
 
     def __str__(self):
-        return f'{self.name} @ {self.apartment.name}'
+        return f'{self.name}'
 
 
 class Item(BaseModel):

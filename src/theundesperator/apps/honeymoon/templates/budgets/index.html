@@ -18,9 +18,9 @@
                         {% endif %}
                         <div class="text-center mt-5">
                             {% if edit %}
-                                <h3>{% trans 'View Provider' %}</h3>
+                                <h3>{% trans 'View Budget' %}</h3>
                             {% else %}
-                                <h3>{% trans 'Add Provider' %}</h3>
+                                <h3>{% trans 'Add Budget' %}</h3>
                             {% endif %}
                         </div>
                         <div class="mt-5 py-5 border-top text-center">
@@ -32,41 +32,24 @@
                                             {% csrf_token %}
                                             <div class="row justify-content-center">
                                                 <div class="col-xs-12 col-md-3">
-                                                    <div class="row">
-                                                        {{ form.category|as_crispy_field }}
-                                                        <a id="addCategory" class="btn btn-primary bella-pink"
-                                                           style="height: 50%; margin-top: 30px;"
-                                                           data-toggle="modal" data-target="#addCategoryModal"><i
-                                                                class="fa fa-plus"
-                                                                style="color: white"></i></a>
-                                                    </div>
+                                                    {{ form.hotel_name|as_crispy_field }}
                                                 </div>
                                                 <div class="col-xs-12 col-md-5">
-                                                    {{ form.name|as_crispy_field }}
+                                                    {{ form.hotel_price|as_crispy_field }}
                                                 </div>
                                                 <div class="col-xs-12 col-md-4">
-                                                    {{ form.card|as_crispy_field }}
+                                                    {{ form.tickets_price|as_crispy_field }}
                                                 </div>
                                             </div>
                                             <div class="row justify-content-center">
-                                                <div class="col-xs-12 col-md-4" style="padding: inherit">
-                                                    {{ form.website|as_crispy_field }}
+                                                <div class="col-xs-12 col-md-3">
+                                                    {{ form.leave_date|as_crispy_field }}
+                                                </div>
+                                                <div class="col-xs-12 col-md-5">
+                                                    {{ form.arrival_date|as_crispy_field }}
                                                 </div>
                                                 <div class="col-xs-12 col-md-4">
-                                                    {{ form.phone|as_crispy_field }}
-                                                </div>
-                                                <div class="col-xs-12 col-md-4" style="padding: inherit">
-                                                    {{ form.price|as_crispy_field }}
-                                                </div>
-                                            </div>
-                                            <div class="row justify-content-center">
-                                                <div class="col-xs-12 col-md-8">
-                                                    {{ form.notes|as_crispy_field }}
-                                                </div>
-                                            </div>
-                                            <div class="row justify-content-center">
-                                                <div class="col-xs-12 col-md-4 justify-content-center">
-                                                    {{ form.favorite|as_crispy_field }}
+                                                    {{ form.tour_company|as_crispy_field }}
                                                 </div>
                                             </div>
                                             <div class="row justify-content-center">
@@ -83,47 +66,11 @@
                                             </div>
                                         </fieldset>
                                     </form>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog"
-                                         aria-labelledby="add-category-modal" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title"
-                                                        id="edit-guest-modal">{% trans 'Add Category' %}</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form>
-                                                        {% csrf_token %}
-                                                        <div class="form-group row">
-                                                            <label for="categoryName"
-                                                                   class="col-sm-3 col-form-label">{% trans 'Name' %}:</label>
-                                                            <div class="col-sm-9">
-                                                                <input type="text" class="form-control"
-                                                                       id="categoryName">
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">{% trans 'Close' %}
-                                                    </button>
-                                                    <button type="button" id="saveCategory"
-                                                            class="btn btn-info bella-pink">{% trans 'Save' %}</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div><hr>
                             <div class="row justify-content-end">
-                                <a href="{% url 'ceremony:ceremony-provider-list' %}"
-                                   class="btn btn-primary bella-pink">{% trans 'View all providers' %}</a>
+                                <a href="{% url 'honeymoon:budget-list' %}"
+                                   class="btn btn-primary bella-pink">{% trans 'View all budgets' %}</a>
                             </div>
                         </div>
                     </div>
@@ -131,31 +78,4 @@
             </div>
         </section>
     </div>
-{% endblock %}
-{% block extra_scripts %}
-    <script>
-        $(document).ready(function () {
-            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-            $('#addCategory').click(function (e) {
-                e.preventDefault();
-                $('#addCategoryModal').modal();
-            });
-            $('#saveCategory').click(function (e) {
-                e.preventDefault();
-                $.ajax({
-                    headers: {'X-CSRFToken': csrftoken},
-                    url: "{% url 'ceremony:ceremony-category-create' %}",
-                    method: 'POST',
-                    data: {
-                        'name': $('#categoryName').val()
-                    },
-                    dataType: 'json'
-                }).done(function (data) {
-                    location.reload();
-                }).fail(function () {
-                    console.log('deu bad');
-                });
-            });
-        });
-    </script>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django import forms
 
-from theundesperator.apps.apartments.models import Apartment
+from theundesperator.apps.apartments.models import Apartment, Room, Expense
 
 
 class ApartmentFrontForm(forms.ModelForm):
@@ -24,3 +24,22 @@ class ApartmentFrontForm(forms.ModelForm):
         widgets = {
             'notes': forms.Textarea(attrs={'rows': 1})
         }
+
+
+class RoomFrontForm(forms.ModelForm):
+    class Meta:
+        model = Room
+        fields = [
+            'name',
+        ]
+
+
+class ExpenseFrontForm(forms.ModelForm):
+    class Meta:
+        model = Expense
+        fields = [
+            'type',
+            'name',
+            'price',
+            'notes',
+        ]
