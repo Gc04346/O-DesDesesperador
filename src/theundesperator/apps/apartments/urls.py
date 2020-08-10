@@ -26,9 +26,10 @@ urlpatterns = [
     # path('expense/update/<int:apartment_id>', views.expense_update, name='expense-update'),
     path('expense/delete/<int:expense_id>', views.expense_delete, name='expense-delete'),
     # ------- Item ------- #
-    # path('item/list', views.item_list, name='item-list'),
+    path('item/list', views.item_list, name='item-list'),
     # path('item/detail/<int:apartment_id>', views.item_detail, name='item-detail'),
-    # path('item/create', views.item_create, name='item-create'),
+    path('item/create', views.item_create, name='item-create'),
     # path('item/update/<int:apartment_id>', views.item_update, name='item-update'),
-    # path('item/delete/<int:apartment_id>', views.item_delete, name='item-delete'),
+    path('item/delete/<int:item_id>', views.item_delete, name='item-delete'),
+    path('item/mark_as_done/<int:item_id>', views.mark_unmark_item, name='item-done'),
 ]

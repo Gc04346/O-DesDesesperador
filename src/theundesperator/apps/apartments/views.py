@@ -4,8 +4,8 @@ from django.shortcuts import render, redirect
 from django.utils.translation import ugettext as _
 from django.views.decorators.http import require_POST
 
-from theundesperator.apps.apartments.forms import ApartmentFrontForm, RoomFrontForm, ExpenseFrontForm
-from theundesperator.apps.apartments.models import Apartment, Room, Expense
+from theundesperator.apps.apartments.forms import ApartmentFrontForm, RoomFrontForm, ExpenseFrontForm, ItemFrontForm
+from theundesperator.apps.apartments.models import Apartment, Room, Expense, Item
 
 
 def apartment_list(request):
@@ -24,7 +24,7 @@ def apartment_delete(request, apartment_id):
 def apartment_create(request):
     context = dict()
     if request.method == 'POST':
-        form = ApartmentFrontForm(request.POST)
+        form = ApartmentFrontForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, _('New apartment added!'), extra_tags='success')
@@ -47,7 +47,7 @@ def apartment_update(request, apartment_id):
     context = dict()
     apartment = Apartment.objects.get(id=apartment_id)
     if request.method == 'POST':
-        form = ApartmentFrontForm(data=request.POST, instance=apartment)
+        form = ApartmentFrontForm(data=request.POST, files=request.FILES, instance=apartment)
         form_is_valid = form.is_valid()
         if form_is_valid:
             form.save()
@@ -81,7 +81,7 @@ def room_list(request):
 
 @require_POST
 def room_create(request):
-    form = RoomFrontForm(data=request.POST)
+    form = RoomFrontForm(data=request.POST, files=request.FILES)
     response = dict()
     form_is_valid = form.is_valid()
     if form_is_valid:
@@ -103,7 +103,7 @@ def room_delete(request, room_id):
 
 @require_POST
 def expense_create(request):
-    form = ExpenseFrontForm(data=request.POST)
+    form = ExpenseFrontForm(data=request.POST, files=request.FILES)
     response = dict()
     form_is_valid = form.is_valid()
     if form_is_valid:
@@ -124,4 +124,47 @@ def expense_delete(request, expense_id):
 
 
 def room_detail(request, room_id):
-    pass
+    context = dict()
+    room = Room.objects.get(id=room_id)
+    items = Item.objects.filter(room=room)
+    context['items'] = items
+    context['room'] = room
+    return render(request, 'items/index.html', context=context)
+
+
+def item_delete(request, item_id):
+    item = Item.objects.get(id=item_id)
+    room = item.room
+    item.delete()
+    return JsonResponse({'status': 'success'})
+    return redirect('apartment:room-detail', room_id=room.id)
+
+
+def item_list(request):
+    context = dict()
+    context['items'] = Item.objects.all()
+    context['rooms'] = Room.objects.all()
+    return render(request, 'items/list.html', context=context)
+
+
+@require_POST
+def item_create(request):
+    response = dict()
+    form = ItemFrontForm(data=request.POST, files=request.FILES)
+    if form.is_valid():
+        form.save()
+        messages.success(request, _('Item added!'), extra_tags='success')
+        response['status'] = 'success'
+    else:
+        messages.warning(request, _('Fix the validation errors below before saving!'), extra_tags='error')
+        response['status'] = 'error'
+    return JsonResponse(response)
+
+
+def mark_unmark_item(request, item_id):
+    response = dict()
+    item = Item.objects.get(id=item_id)
+    item.done = False if item.done else True
+    item.save()
+    response['status'] = 'success'
+    return JsonResponse(response)

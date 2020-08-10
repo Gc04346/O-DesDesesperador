@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="wrapper">
+        <section class="section">
+            <div class="container">
+                <div class="card shadow mt-300">
+                    <div class="px-4">
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li style="color: white" {% if message.tags %}
+                                        class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="text-center mt-5">
+                            <h3>{{ item.name }}</h3>
+                        </div>
+                        <div class="mt-5 py-5 border-top text-center">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-9">
+                                    <h5>{% trans 'Items' %}</h5>
+                                    <table id="myItems" class="dataTable table table-striped nowrap mt-4"
+                                           style="width:100%">
+                                        <thead>
+                                        <tr class="text-center">
+                                            <th>{% trans 'Room' %}</th>
+                                            <th>{% trans 'Urgency' %}</th>
+                                            <th>{% trans 'Name' %}</th>
+                                            <th>{% trans 'Unit Price' %}</th>
+                                            <th>{% trans 'Qantity' %}</th>
+                                            <th>{% trans 'Total Price' %}</th>
+                                            <th>{% trans 'Notes' %}</th>
+                                            <th>{% trans 'Done' %}</th>
+                                            <th>{% trans 'Delete' %}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for item in items %}
+                                            <td>{{ item.room }}</td>
+                                            <td>{{ item.get_urgency_display }}</td>
+                                            <td>{{ item.name }}</td>
+                                            <td>R$ {{ item.unit_price }}</td>
+                                            <td>{{ item.quantity }}</td>
+                                            <td>R$ {{ item.total_price }}</td>
+                                            <td>{{ item.notes }}</td>
+                                            <td>
+                                                <input id="mark-item-{{ item.id }}" class="form-check-input"
+                                                       id="customCheck2" type="checkbox"
+                                                        {% if item.done %}
+                                                       checked
+                                                        {% endif %}
+                                                >
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-info bella-pink"
+                                                   id="item-delete-{{ item.id }}"><i
+                                                        class="fa fa-times table-button"></i></a>
+                                            </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <div class="row mt-4  mb-5">
+                                        <div class="col-xs-12 col-md-12 justify-content-end">
+                                            <a id="item-create" class="btn btn-success"
+                                               style="background-color: deeppink; border-color:hotpink">
+                                                {% trans 'Add' %} {% trans 'Item' %}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="add-expense-modal" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"
+                                                id="add-expense-modal">{% trans 'Add' %} {% trans 'Item' %} {% trans 'to Room' %}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                {% csrf_token %}
+                                                <div class="form-group row">
+                                                    <label for="itemRoom"
+                                                           class="col-sm-3 col-form-label">{% trans 'Room' %}:</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="form-control" id="itemRoom">
+                                                            {% for room in rooms %}
+                                                                <option value={{ room.id }}>{{ room }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="itemUrgency"
+                                                           class="col-sm-3 col-form-label">{% trans 'Urgency' %}:</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="form-control" id="itemUrgency">
+                                                            <option value="ES">{% trans 'Essential' %}</option>
+                                                            <option selected value="IM">{% trans 'Important' %}</option>
+                                                            <option value="DE">{% trans 'Delayable' %}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="itemName"
+                                                           class="col-sm-3 col-form-label">{% trans 'Name' %}:</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="itemName">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="itemUnitPrice"
+                                                           class="col-sm-3 col-form-label">{% trans 'Unit price' %}:</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="itemUnitPrice"
+                                                               value="0">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="itemQuantity"
+                                                           class="col-sm-3 col-form-label">{% trans 'Quantity' %}:</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="number" class="form-control" id="itemQuantity"
+                                                               value="1">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="itemNotes"
+                                                           class="col-sm-3 col-form-label">{% trans 'Notes' %}:</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="itemNotes">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">{% trans 'Close' %}
+                                            </button>
+                                            <button type="button" id="addItemToRoomBtn"
+                                                    class="btn btn-info bella-pink">{% trans 'Add' %}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+{% block extra_scripts %}
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            $('#myItems').DataTable({
+                "order": [[2, 'desc']],
+                paging: false,
+                info: false,
+                responsive: true,
+                "scrollX": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json"
+                },
+            });
+            $('#item-create').click(function (e) {
+                e.preventDefault();
+                $('#addItemModal').modal();
+            });
+            $('#addItemToRoomBtn').click(function (e) {
+                e.preventDefault();
+                let create_item_url = "{% url 'apartment:item-create' %}";
+                $.ajax({
+                    headers: {'X-CSRFToken': csrftoken},
+                    url: create_item_url,
+                    method: 'POST',
+                    data: {
+                        room: $('#itemRoom').children("option:selected").val(),
+                        urgency: $('#itemUrgency').children("option:selected").val(),
+                        name: $('#itemName').val(),
+                        unit_price: $('#itemUnitPrice').val(),
+                        quantity: $('#itemQuantity').val(),
+                        notes: $('#itemNotes').val(),
+                        done: false,
+                    },
+                    dataType: 'json'
+                }).done(function () {
+                    window.location.reload();
+                }).fail(function () {
+                    {#window.location.reload();#}
+                });
+            });
+            $('*[id*=mark-item-]').each(function () {
+                $(this).change(function (e) {
+                    e.preventDefault();
+                    let elem_id = $(this).attr('id');
+                    let ar = elem_id.split('-');
+                    let item_id = ar[ar.length - 1];
+
+                    let get_item_url = "{% url 'apartment:item-done' 0 %}".replace('0', item_id);
+                    $.ajax({
+                        url: get_item_url,
+                        method: 'GET',
+                        dataType: 'json'
+                    }).done(function (data) {
+                        if (data['status'] === 'success') {
+                            location.reload();
+                        } else {
+                            console.log('nao funfou');
+                        }
+                    }).fail(function () {
+                        console.log('deu ruim')
+                    });
+                });
+            });
+            $('*[id*=item-delete-]').each(function () {
+                $(this).click(function (e) {
+                    e.preventDefault();
+                    let elem_id = $(this).attr('id');
+                    let ar = elem_id.split('-');
+                    let item_id = ar[ar.length - 1];
+
+                    let delete_item_url = "{% url 'apartment:item-delete' 0 %}".replace('0', item_id);
+                    $.ajax({
+                        url: delete_item_url,
+                        method: 'GET',
+                        dataType: 'json'
+                    }).done(function (data) {
+                        if (data['status'] === 'success') {
+                            window.location.reload();
+                        } else {
+                            console.log('nao funfou');
+                        }
+                    }).fail(function () {
+                        console.log('deu ruim')
+                    });
+                });
+            });
+        });
+    </script>
+{% endblock %}

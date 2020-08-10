@@ -22,7 +22,7 @@
                         <div class="mt-5 py-5 border-top text-center">
                             <div class="row justify-content-center">
                                 <div class="col-lg-9">
-                                    <form data-toggle="validator" method="post">
+                                    <form data-toggle="validator" method="post" enctype="multipart/form-data">
                                         <fieldset>
                                             {% csrf_token %}
                                             <div class="row justify-content-center">
@@ -40,36 +40,76 @@
                                                 </div>
                                             </div>
                                             <div class="row justify-content-center">
-                                                <div class="col-xs-12 col-md-3">
+                                                <div class="col-xs-12 col-md-6">
+                                                    {% if brides_dress %}
+                                                    <img src={{ brides_dress.url }} alt="brides_dress">
+                                                    {% else %}
                                                     {{ form.brides_dress|as_crispy_field }}
+                                                    {% endif %}
                                                 </div>
-                                                <div class="col-xs-12 col-md-3">
+                                                <div class="col-xs-12 col-md-6">
+                                                    {% if brides_shoes %}
+                                                    <img src={{ brides_shoes.url }} alt="brides_shoes">
+                                                    {% else %}
                                                     {{ form.brides_shoes|as_crispy_field }}
+                                                    {% endif %}
                                                 </div>
-                                                <div class="col-xs-12 col-md-3">
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xs-12 col-md-6">
+                                                    {% if brides_hairstyle %}
+                                                    <img src={{ brides_hairstyle.url }} alt="brides_hairstyle">
+                                                    {% else %}
                                                     {{ form.brides_hairstyle|as_crispy_field }}
+                                                    {% endif %}
                                                 </div>
-                                                <div class="col-xs-12 col-md-3">
-                                                    {{ form.brides_makeup|as_crispy_field }}
-                                                </div>
-                                            </div>
-                                            <div class="row justify-content-center">
-                                                <div class="col-xs-12 col-md-4">
+                                                <div class="col-xs-12 col-md-6">
+                                                    {% if brides_hair_accessories %}
+                                                    <img src={{ brides_hair_accessories.url }} alt="brides_hair_accessories">
+                                                    {% else %}
                                                     {{ form.brides_hair_accessories|as_crispy_field }}
-                                                </div>
-                                                <div class="col-xs-12 col-md-4">
-                                                    {{ form.brides_body_accessories|as_crispy_field }}
-                                                </div>
-                                                <div class="col-xs-12 col-md-4">
-                                                    {{ form.brides_lingerie|as_crispy_field }}
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                             <div class="row justify-content-center">
                                                 <div class="col-xs-12 col-md-6">
-                                                    {{ form.grooms_suit|as_crispy_field }}
+                                                    {% if brides_makeup %}
+                                                    <img src={{ brides_makeup.url }} alt="brides_makeup">
+                                                    {% else %}
+                                                    {{ form.brides_makeup|as_crispy_field }}
+                                                    {% endif %}
                                                 </div>
                                                 <div class="col-xs-12 col-md-6">
+                                                    {% if brides_body_accessories %}
+                                                    <img src={{ brides_body_accessories.url }} alt="brides_body_accessories">
+                                                    {% else %}
+                                                    {{ form.brides_body_accessories|as_crispy_field }}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    {% if brides_lingerie %}
+                                                    <img src={{ brides_lingerie.url }} alt="brides_lingerie">
+                                                    {% else %}
+                                                    {{ form.brides_lingerie|as_crispy_field }}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xs-12 col-md-6">
+                                                    {% if grooms_suit %}
+                                                    <img src={{ grooms_suit.url }} alt="grooms_suit">
+                                                    {% else %}
+                                                    {{ form.grooms_suit|as_crispy_field }}
+                                                    {% endif %}
+                                                </div>
+                                                <div class="col-xs-12 col-md-6">
+                                                    {% if grooms_shoes %}
+                                                    <img src={{ grooms_shoes.url }} alt="grooms_shoes">
+                                                    {% else %}
                                                     {{ form.grooms_shoes|as_crispy_field }}
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                             <hr>

@@ -1,6 +1,6 @@
 from django import forms
 
-from theundesperator.apps.apartments.models import Apartment, Room, Expense
+from theundesperator.apps.apartments.models import Apartment, Room, Expense, Item
 
 
 class ApartmentFrontForm(forms.ModelForm):
@@ -31,6 +31,20 @@ class RoomFrontForm(forms.ModelForm):
         model = Room
         fields = [
             'name',
+        ]
+
+
+class ItemFrontForm(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = [
+            'urgency',
+            'name',
+            'unit_price',
+            'quantity',
+            'notes',
+            'done',
+            'room',
         ]
 
 

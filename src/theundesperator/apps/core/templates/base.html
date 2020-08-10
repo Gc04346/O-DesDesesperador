@@ -51,7 +51,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="{% url 'ceremony:ceremony-index' %}">{% trans 'Main' %}</a>
-                                    <a class="dropdown-item" href="{% url 'ceremony:ceremony-music-list' %}">{% trans 'Music' %}</a>
+                                    <a class="dropdown-item" href="{% url 'ceremony:ceremony-music-list' %}">{% trans 'Musics' %}</a>
                                     <a class="dropdown-item" href="{% url 'ceremony:ceremony-clothes_planner-list' %}">{% trans 'Clothes' %}</a>
                                     <a class="dropdown-item" href="{% url 'ceremony:ceremony-groomsman-list' %}">{% trans 'Groomsmen' %}</a>
                                     <a class="dropdown-item" href="{% url 'ceremony:ceremony-guest-list' %}">{% trans 'Guests' %}</a>
@@ -68,7 +68,7 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="{% url 'apartment:room-list' %}">{% trans 'Main' %}</a>
                                     <a class="dropdown-item" href="{% url 'apartment:apartment-list' %}">{% trans 'Apartment Options' %}</a>
-                                    <a class="dropdown-item" href="#">{% trans 'Items' %}</a>
+                                    <a class="dropdown-item" href="{% url 'apartment:item-list' %}">{% trans 'Items' %}</a>
                                 </div>
                             </div>
                         </li>
@@ -91,9 +91,9 @@
                                     {% trans 'Pantea' %}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">{% trans 'Main' %}</a>
-                                    <a class="dropdown-item" href="#">{% trans 'Guests' %}</a>
-                                    <a class="dropdown-item" href="#">{% trans 'Decoration' %}</a>
+                                    <a class="dropdown-item" href="{% url 'pantea:index' %}">{% trans 'Main' %}</a>
+                                    <a class="dropdown-item" href="{% url 'pantea:pan_tea_guest-list' %}">{% trans 'Guests' %}</a>
+                                    <a class="dropdown-item" href="{% url 'pantea:decoration-list' %}">{% trans 'Decoration' %}</a>
                                 </div>
                             </div>
                         </li>

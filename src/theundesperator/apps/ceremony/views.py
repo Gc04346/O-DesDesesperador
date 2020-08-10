@@ -13,7 +13,7 @@ from theundesperator.apps.ceremony.models import Guest, Category, Provider, Cere
 def guest_create(request):
     context = dict()
     if request.method == 'POST':
-        form = GuestFrontForm(request.POST)
+        form = GuestFrontForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, _('{} was added to the guest list!').format(form.cleaned_data["name"]),
@@ -38,7 +38,7 @@ def guests_list(request):
 @require_POST
 def guest_update(request, guest_id):
     guest = Guest.objects.get(id=guest_id)
-    form = GuestFrontForm(data=request.POST, instance=guest)
+    form = GuestFrontForm(data=request.POST, files=request.FILES, instance=guest)
     response = dict()
     form_is_valid = form.is_valid()
     if form_is_valid:
@@ -62,7 +62,7 @@ def guest_delete(request, guest_id):
 def groomsman_create(request):
     context = dict()
     if request.method == 'POST':
-        form = GroomsmanFrontForm(request.POST)
+        form = GroomsmanFrontForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             groomsman = form.save()
             if groomsman.duo:
@@ -105,7 +105,7 @@ def groomsman_update(request, groomsman_id):
     context = dict()
     groomsman = Groomsman.objects.get(id=groomsman_id)
     if request.method == 'POST':
-        form = GroomsmanFrontForm(data=request.POST, instance=groomsman)
+        form = GroomsmanFrontForm(data=request.POST, files=request.FILES, instance=groomsman)
         form_is_valid = form.is_valid()
         if form_is_valid:
             groomsman = form.save()
@@ -140,7 +140,7 @@ def groomsman_delete(request, groomsman_id):
 
 def category_create(request):
     response = dict()
-    form = CategoryFrontForm(request.POST)
+    form = CategoryFrontForm(data=request.POST, files=request.FILES)
     if form.is_valid():
         form.save()
         messages.success(request, _('New category added!'), extra_tags='success')
@@ -161,7 +161,7 @@ def category_delete(request, category_id):
 def provider_create(request):
     context = dict()
     if request.method == 'POST':
-        form = ProviderFrontForm(request.POST)
+        form = ProviderFrontForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, _('New provider added!'), extra_tags='success')
@@ -189,7 +189,7 @@ def provider_update(request, provider_id):
     context = dict()
     provider = Provider.objects.get(id=provider_id)
     if request.method == 'POST':
-        form = ProviderFrontForm(data=request.POST, instance=provider)
+        form = ProviderFrontForm(data=request.POST, files=request.FILES, instance=provider)
         form_is_valid = form.is_valid()
         if form_is_valid:
             form.save()
@@ -215,7 +215,7 @@ def set_provider_as_favorite(request, provider_id):
 def music_create(request):
     context = dict()
     if request.method == 'POST':
-        form = MusicFrontForm(request.POST)
+        form = MusicFrontForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, _('New music added!'), extra_tags='success')
@@ -244,7 +244,7 @@ def music_update(request, music_id):
     context = dict()
     music = Music.objects.get(id=music_id)
     if request.method == 'POST':
-        form = MusicFrontForm(data=request.POST, instance=music)
+        form = MusicFrontForm(data=request.POST, files=request.FILES, instance=music)
         form_is_valid = form.is_valid()
         if form_is_valid:
             form.save()
@@ -263,9 +263,9 @@ def ceremony_index(request):
     if request.method == 'POST':
         try:
             ceremony = Ceremony.objects.get(id=1)
-            form = CeremonyFrontForm(instance=ceremony, data=request.POST)
+            form = CeremonyFrontForm(instance=ceremony, data=request.POST, files=request.FILES)
         except Ceremony.DoesNotExist:
-            form = CeremonyFrontForm(data=request.POST)
+            form = CeremonyFrontForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, _('Ceremony updated!'), extra_tags='success')
@@ -286,9 +286,9 @@ def clothes_planner(request):
     if request.method == 'POST':
         try:
             clothes_planner = ClothesPlanner.objects.get(id=1)
-            form = ClothesPlannerFrontForm(instance=clothes_planner, data=request.POST)
+            form = ClothesPlannerFrontForm(instance=clothes_planner, data=request.POST, files=request.FILES)
         except ClothesPlanner.DoesNotExist:
-            form = ClothesPlannerFrontForm(data=request.POST)
+            form = ClothesPlannerFrontForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, _('Clothes updated!'), extra_tags='success')
@@ -307,7 +307,7 @@ def clothes_planner(request):
 @require_POST
 def occasion_create(request):
     response = dict()
-    form = OccasionFrontForm(request.POST)
+    form = OccasionFrontForm(data)
     if form.is_valid():
         form.save()
         messages.success(request, _('New occasion added!'), extra_tags='success')

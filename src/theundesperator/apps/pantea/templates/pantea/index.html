@@ -17,84 +17,58 @@
                             </ul>
                         {% endif %}
                         <div class="text-center mt-5">
-                            <h3>
-                                {% if edit %}
-                                    {% trans 'Edit' %}
-                                {% else %}
-                                    {% trans 'New' %}
-                                {% endif %}
-                                {% trans ' Apartment Option' %}
-                            </h3>
+                            <h3>{% trans 'Our PanTea' %}</h3>
                         </div>
                         <div class="mt-5 py-5 border-top text-center">
                             <div class="row justify-content-center">
                                 <div class="col-lg-9">
                                     <form data-toggle="validator" method="post" enctype="multipart/form-data">
-                                        {{ form.non_field_errors }}
                                         <fieldset>
                                             {% csrf_token %}
                                             <div class="row justify-content-center">
                                                 <div class="col-xs-12 col-md-6">
-                                                    {{ form.name|as_crispy_field }}
+                                                    {{ form.soda_quantity|as_crispy_field }}
                                                 </div>
                                                 <div class="col-xs-12 col-md-6">
-                                                    {{ form.address|as_crispy_field }}
+                                                    {{ form.diet_soda_quantity|as_crispy_field }}
                                                 </div>
                                             </div>
                                             <div class="row justify-content-center">
                                                 <div class="col-xs-12 col-md-6">
-                                                    {{ form.num_rooms|as_crispy_field }}
+                                                    {{ form.juice_quantity|as_crispy_field }}
                                                 </div>
                                                 <div class="col-xs-12 col-md-6">
-                                                    {{ form.num_bathrooms|as_crispy_field }}
+                                                    {{ form.diet_juice_quantity|as_crispy_field }}
                                                 </div>
                                             </div>
                                             <div class="row justify-content-center">
                                                 <div class="col-xs-12 col-md-6">
-                                                    {{ form.distance_to_subway|as_crispy_field }}
+                                                    {{ form.food_cook|as_crispy_field }}
                                                 </div>
                                                 <div class="col-xs-12 col-md-6">
-                                                    {{ form.distance_to_bus_stop|as_crispy_field }}
+                                                    {{ form.how_to_get_the_food|as_crispy_field }}
                                                 </div>
                                             </div>
                                             <div class="row justify-content-center">
                                                 <div class="col-xs-12 col-md-6">
-                                                    {{ form.distance_to_essential_places|as_crispy_field }}
-                                                </div>
-                                                <div class="col-xs-12 col-md-6">
-                                                    {{ form.price|as_crispy_field }}
+                                                    {{ form.food_price|as_crispy_field }}
                                                 </div>
                                             </div>
                                             <div class="row justify-content-center">
                                                 <div class="col-xs-12 col-md-6">
-                                                    {{ form.notes|as_crispy_field }}
+                                                    {{ form.food_ready|as_crispy_field }}
                                                 </div>
                                                 <div class="col-xs-12 col-md-6">
-                                                    {{ form.couple_grade|as_crispy_field }}
+                                                    {{ form.drinks_ready|as_crispy_field }}
                                                 </div>
                                             </div>
-                                            <div class="row justify-content-center">
-                                                <div class="col-xs-12 col-md-6">
-                                                    {{ form.picture|as_crispy_field }}
-                                                </div>
-                                                <div class="col-xs-12 col-md-6">
-                                                    {{ form.contact|as_crispy_field }}
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-12 col-md-6">
-                                                    {{ form.favorite|as_crispy_field }}
-                                                </div>
+                                            <hr>
+                                            <div class="row justify-content-center mt-4">
+                                                <button class="btn btn-success" type="submit"
+                                                        style="background-color: deeppink; border-color:hotpink">{% trans 'Save Changes' %}</button>
                                             </div>
                                         </fieldset>
-                                        <button class="btn btn-success" type="submit"
-                                                style="background-color: deeppink; border-color:hotpink">{% trans 'Save' %}</button>
                                     </form>
-                                    <hr>
-                                    <div class="row justify-content-end">
-                                        <a href="{% url 'apartment:apartment-list' %}"
-                                           class="btn btn-primary bella-pink">{% trans 'View all apartments' %}</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -103,4 +77,7 @@
             </div>
         </section>
     </div>
+{% endblock %}
+{% block extra_scripts %}
+
 {% endblock %}

@@ -13,9 +13,9 @@ def honeymoon_organizer_index(request):
     if request.method == 'POST':
         try:
             honeymoon_organizer = HoneymoonOrganizer.objects.get(id=1)
-            form = HoneymoonOrganizerFrontForm(instance=honeymoon_organizer, data=request.POST)
+            form = HoneymoonOrganizerFrontForm(instance=honeymoon_organizer, data=request.POST, files=request.FILES)
         except HoneymoonOrganizer.DoesNotExist:
-            form = HoneymoonOrganizerFrontForm(data=request.POST)
+            form = HoneymoonOrganizerFrontForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, _('Honeymoon updated!'), extra_tags='success')
@@ -34,7 +34,7 @@ def honeymoon_organizer_index(request):
 def budget_create(request):
     context = dict()
     if request.method == 'POST':
-        form = BudgetFrontForm(request.POST)
+        form = BudgetFrontForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, _('New budget added!'), extra_tags='success')
@@ -62,7 +62,7 @@ def budget_update(request, budget_id):
     context = dict()
     budget = Budget.objects.get(id=budget_id)
     if request.method == 'POST':
-        form = BudgetFrontForm(data=request.POST, instance=budget)
+        form = BudgetFrontForm(data=request.POST, files=request.FILES, instance=budget)
         form_is_valid = form.is_valid()
         if form_is_valid:
             form.save()

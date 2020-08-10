@@ -154,7 +154,7 @@
                                 </div>
                             </div>
                             {#                        #}
-                            <div class="modal fade" id="addExpenseModal" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog"
                                  aria-labelledby="add-expense-modal" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -169,10 +169,10 @@
                                             <form>
                                                 {% csrf_token %}
                                                 <div class="form-group row">
-                                                    <label for="expenseName"
+                                                    <label for="roomName"
                                                            class="col-sm-3 col-form-label">{% trans 'Name' %}:</label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" id="expenseName">
+                                                        <input type="text" class="form-control" id="roomName">
                                                     </div>
                                                 </div>
                                             </form>

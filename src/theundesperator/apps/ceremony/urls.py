@@ -13,7 +13,7 @@ urlpatterns = [
     # path('category/update/<int:pk>', views.category_update, name='ceremony-category-update'),
     path('category/delete/<int:category_id>', views.category_delete, name='ceremony-category-delete'),
     # ------- Ceremony ------- #
-    path('ceremony/', views.ceremony_index, name='ceremony-index'),
+    path('', views.ceremony_index, name='ceremony-index'),
     # path('ceremony/detail/<int:pk>', views.ceremony_detail, name='ceremony-ceremony-detail'),
     # path('ceremony/create', views.ceremony_create, name='ceremony-ceremony-create'),
     # path('ceremony/update/<int:pk>', views.ceremony_update, name='ceremony-ceremony-update'),

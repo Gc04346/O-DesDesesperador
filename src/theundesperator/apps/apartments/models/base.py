@@ -52,7 +52,7 @@ class Item(BaseModel):
     name = models.CharField(verbose_name=_('Name'), max_length=100, null=True, blank=True)
     unit_price = models.DecimalField(verbose_name=_('Price (Un.)'), max_digits=7, decimal_places=2, null=True, blank=True)
     quantity = models.PositiveSmallIntegerField(verbose_name=_('Quantity'), default=1)
-    total_price = models.DecimalField(verbose_name=_('Price (Tt.)'), max_digits=7, decimal_places=2, null=True, blank=True)
+    # total_price = models.DecimalField(verbose_name=_('Price (Tt.)'), max_digits=7, decimal_places=2, null=True, blank=True)
     notes = models.TextField(verbose_name=_('Notes'), null=True, blank=True)
     done = models.BooleanField(verbose_name=_('Check'), default=False)
     room = models.ForeignKey(verbose_name=_('Room'), to=Room, on_delete=models.CASCADE)
@@ -63,6 +63,10 @@ class Item(BaseModel):
 
     def __str__(self):
         return f'{self.name} @ {self.room.name}'
+
+    @property
+    def total_price(self):
+        return self.unit_price * self.quantity if self.unit_price else 0.00
 
 
 class Expense(BaseModel):
